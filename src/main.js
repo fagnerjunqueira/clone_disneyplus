@@ -1,5 +1,14 @@
 document.addEventListener('DOMContentLoaded', function(){
     const buttons = document.querySelectorAll('[data-tab-button]')
+    const alturaHero = document.querySelector('.hero').clientHeight
+
+    window.addEventListener('scroll', function(){
+        if(this.window.scrollY < alturaHero){
+            ocultaElementosHeader()
+        } else {
+            exibeElementosHeader()
+        }
+    })
     
     for (let i = 0; i < buttons.length; i++){
         buttons[i].addEventListener('click', function(botao){
@@ -27,4 +36,12 @@ function escondeTodasAbas() {
     for (let i = 0; i < tabsContainer.length; i++){
         tabsContainer[i].classList.remove('shows__list--is-active')
     }
- }
+function ocultaElementosHeader() { 
+    const header = document.querySelector('.header')
+    header.classList.add('header--is-hidden')
+}
+
+function exibeElementosHeader() { 
+    const header = document.querySelector('.header')
+    header.classList.remove('header--is-hidden')
+}
